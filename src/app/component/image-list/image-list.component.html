@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Галерея</a>
+
+    <form class="container-fluid" novalidate [formGroup]="formImport">
+        <div class="input-group">
+
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" formControlName="importFile" id="importFile" (change)="onFileChange($event.target.files)">
+                <label class="custom-file-label" #labelImport for="importFile"><i class="fas fa-search"></i>Выбрать файл</label>
+            </div>
+
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="import()"><i class="fas fa-file-import"></i> Загрузить.</button>
+            </div>
+
+        </div>
+    </form>
+
+</nav>
+
+<ul>
+    <li *ngFor="let img of imageList"> {{img.id}} {{img.name}} </li>
+</ul>
