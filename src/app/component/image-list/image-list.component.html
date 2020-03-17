@@ -10,14 +10,26 @@
             </div>
 
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" (click)="import()"><i class="fas fa-file-import"></i> Загрузить.</button>
+                <button class="btn btn-outline-secondary" type="button" (click)="import()"><i class="fas fa-file-import"></i>
+                 Загрузить</button>
             </div>
 
         </div>
     </form>
-
 </nav>
 
-<ul>
-    <li *ngFor="let img of imageList"> {{img.id}} {{img.name}} </li>
+
+<ul class="row">
+    <li *ngFor="let img of imageList" class="col-md-1">
+        <div class="text-center p-1">
+            <img class="rounded img-thumbnail" src="{{'data:image/jpg;base64,'+img.pictures}}" (click)="navigateToId(img.id)" />
+            <!-- <a [routerLink]="['/image', img.id]">
+                <img class="rounded img-thumbnail" src="{{'data:image/jpg;base64,'+img.pictures}}" />
+            </a> -->
+        </div>
+    </li>
 </ul>
+
+<div>
+    <router-outlet></router-outlet>
+</div>

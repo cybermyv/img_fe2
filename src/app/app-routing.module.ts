@@ -10,17 +10,17 @@ import { ImageDetailComponent } from './component/image-detail/image-detail.comp
 
 const routes: Routes = [
   {
-    path:'',
-    redirectTo: ROUTES.image,
-    pathMatch: 'full'
-  },
-  {
-    path: ROUTES.image,
-    component:ImageListComponent
+    path: '',
+    pathMatch: 'full',
+    component: ImageListComponent
   },
   {
     path: ROUTES.image + '/:id',
     component: ImageDetailComponent
+  },
+  {
+    path: ROUTES.image,
+    component: ImageListComponent
   }
 ];
 

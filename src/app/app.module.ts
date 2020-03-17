@@ -12,6 +12,7 @@ import { ImageService } from './service/image.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { ImageService } from './service/image.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [
     ImageService,

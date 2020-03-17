@@ -1,5 +1,6 @@
 import {  Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ImageService } from 'src/app/service/image.service';
 
@@ -16,8 +17,8 @@ export class ImageListComponent implements OnInit {
   formImport: FormGroup;
   fileToUpload: File = null;
   imageList: any;
-  
-  constructor( private imageService: ImageService) {
+
+  constructor( private imageService: ImageService, private router: Router) {
     this.formImport = new FormGroup({
       importFile: new FormControl('', Validators.required)
     });
@@ -34,9 +35,25 @@ export class ImageListComponent implements OnInit {
 
   import(): void {
     console.log('import ' + this.fileToUpload.name);
+
+    const formData = new FormData();
+
+    formData.append('importFile', this.fileToUpload );
+    formData.append('path', 'Дополнительный текст' );
+
+    this.imageService.setImage(formData).subscribe(data => console.log('upload'));
+
     // очищаем инпут и переменную с файлом
     this.labelImport.nativeElement.innerText = 'Выбрать файл';
     this.fileToUpload = null;
+  }
+
+  navigateToId(id: string) {
+    console.log(id);
+
+    this.router.navigate([`/img/${id}`]);
+
+    // this.imageService.getImgById(id).subscribe();
   }
 
 }
