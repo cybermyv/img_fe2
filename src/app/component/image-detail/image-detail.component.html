@@ -1,1 +1,4 @@
-<p>image-detail works!</p>
+<div class="text-center p-1" *ngFor="let element of image">
+    <p>{{element.path}}</p>
+    <img class="rounded " src="{{'data:image/jpg;base64,'+element.pictures}}"  />
+</div>

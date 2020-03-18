@@ -49,7 +49,7 @@ export class ImageListComponent implements OnInit {
   }
 
   navigateToId(id: string) {
-    console.log(id);
+   
 
     this.router.navigate([`/img/${id}`]);
 

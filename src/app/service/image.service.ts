@@ -23,7 +23,10 @@ export class ImageService {
 
   getImgById(id: string) {
 
-    return this.http.get(SERVICES.image.path + '/' + id).pipe(tap(data => console.log(data)));
+    return this.http.get(SERVICES.image.path + '/' + id).pipe(
+      // tap(data => console.log(data)
+      // )
+      );
   }
 
 }

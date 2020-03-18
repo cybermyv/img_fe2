@@ -17,9 +17,8 @@ export class ImageDetailComponent implements OnInit {
   ngOnInit() {
 
     // tslint:disable-next-line:no-string-literal
-    this.image = this.imageService.getImgById(this.route.snapshot.params['id']);
-    console.log(this.image);
-
+    this.imageService.getImgById(this.route.snapshot.params['id']).subscribe(
+      data => this.image = data );
   }
 
 }
