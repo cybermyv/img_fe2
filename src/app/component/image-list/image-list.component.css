@@ -9,3 +9,34 @@ li {
 li:hover {
     background-color: #f8f9fa;
 }
+
+
+ /* ::ng-deep  */
+ ::ng-deep .md-class .modal-dialog { 
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width:none !important;
+     
+}
+
+
+::ng-deep .md-class .modal-content {
+    height: auto !important;
+    min-height: 100% !important;
+    border-radius: 0 !important;
+    
+}
+
+
+
+::ng-deep .md-class .md-pictures {
+    width: auto !important;
+    height: auto !important;
+    max-width: 70% !important;
+    max-height: 50% !important;
+    object-fit: scale-down; 
+    /* object-fit: cover; */
+    /* object-fit: fill; */
+} 

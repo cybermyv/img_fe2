@@ -14,11 +14,13 @@ export class ImageService {
   constructor(private http: HttpClient) { }
 
   getAllImages() {
-    return this.http.get(SERVICES.image.path).pipe(tap(data => console.log(data)));
+    return this.http.get(SERVICES.image.path)
+    // .pipe(tap(data => console.log(data)));
   }
 
   setImage(val) {
-    return this.http.post(SERVICES.image.path, val).pipe(tap(data => console.log(data)));
+    return this.http.post(SERVICES.image.path, val)
+    // .pipe(tap(data => console.log(data)));
   }
 
   getImgById(id: string) {

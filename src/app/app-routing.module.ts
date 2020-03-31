@@ -15,13 +15,15 @@ const routes: Routes = [
     component: ImageListComponent
   },
   {
-    path: ROUTES.image + '/:id',
-    component: ImageDetailComponent
-  },
-  {
     path: ROUTES.image,
     component: ImageListComponent
-  }
+  },
+  {
+    path: ROUTES.image + '/:id',
+    component: ImageDetailComponent,
+    // outlet: 'modal'
+  },
+  
 ];
 
 @NgModule({

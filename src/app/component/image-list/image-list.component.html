@@ -18,12 +18,13 @@
     </form>
 </nav>
 
-
 <ul class="row">
     <li *ngFor="let img of imageList" class="col-md-1">
         <div class="text-center p-1">
             <img class="rounded img-thumbnail" src="{{'data:image/jpg;base64,'+img.pictures}}" (click)="navigateToId(img.id)" />
         </div>
-    </li>
+    </li>    
 </ul>
-
+<!-- <div class="text-center">
+    <button class="btn btn-outline-secondary" type="button" (click)="open()"><i class="fas fa-file-import"></i>Модалка</button>
+</div> -->

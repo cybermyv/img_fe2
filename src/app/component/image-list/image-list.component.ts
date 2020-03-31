@@ -1,8 +1,17 @@
 import {  Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+
+
 
 import { ImageService } from 'src/app/service/image.service';
+// import { ImageDetailComponent } from '../image-detail/image-detail.component';
+
+ import { ModalService } from 'src/app/service/modal.service';
+//  import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @Component({
   selector: 'app-image-list',
@@ -18,14 +27,21 @@ export class ImageListComponent implements OnInit {
   fileToUpload: File = null;
   imageList: any;
 
-  constructor( private imageService: ImageService, private router: Router) {
+  constructor( private imageService: ImageService, private router: Router, private modalService: ModalService) {
     this.formImport = new FormGroup({
       importFile: new FormControl('', Validators.required)
     });
   }
-  ngOnInit() {
-    this.imageService.getAllImages().subscribe(data => this.imageList = Object.values(data));
 
+
+  ngOnInit() {
+    this.loadPictures();
+
+  }
+
+  loadPictures() {
+     this.imageService.getAllImages().subscribe(data => this.imageList = Object.values(data));
+    
   }
 
   onFileChange(files: FileList) {
@@ -41,19 +57,28 @@ export class ImageListComponent implements OnInit {
     formData.append('importFile', this.fileToUpload );
     formData.append('path', 'Дополнительный текст' );
 
-    this.imageService.setImage(formData).subscribe(data => console.log('upload'));
+    this.imageService.setImage(formData).subscribe(() => this.loadPictures());
 
     // очищаем инпут и переменную с файлом
     this.labelImport.nativeElement.innerText = 'Выбрать файл';
     this.fileToUpload = null;
+
+    // this.loadPictures();
   }
 
   navigateToId(id: string) {
-   
-
-    this.router.navigate([`/img/${id}`]);
-
-    // this.imageService.getImgById(id).subscribe();
+    this.modalService.picture(id, 'message', 'md-class').pipe(
+      take(1)
+    ).subscribe(result => console.log(result))
   }
+
+  open(){
+    this.modalService.picture('title', 'message', 'custom-class').pipe(
+      take(1)
+    ).subscribe(result => console.log(result))
+
+  }
+
+  
 
 }

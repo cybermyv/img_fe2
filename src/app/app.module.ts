@@ -10,8 +10,9 @@ import { ImageListComponent } from './component/image-list/image-list.component'
 import { ImageDetailComponent } from './component/image-detail/image-detail.component';
 import { ImageService } from './service/image.service';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
+ 
 
 @NgModule({
   declarations: [
@@ -25,10 +26,16 @@ import { ImageService } from './service/image.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
+    NgbModule,
+    // NgbModule.forRoot()
+    
   ],
   providers: [
     ImageService,
+    
+  ],
+  entryComponents:[
+    ImageDetailComponent
   ],
   bootstrap: [AppComponent]
 })
